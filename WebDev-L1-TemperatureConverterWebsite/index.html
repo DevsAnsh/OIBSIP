@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="A simple, accurate Celsius, Fahrenheit, and Kelvin temperature converter."
+  />
+
+  <title>Therma — Temperature Converter</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Therma home">
+      <span>●</span> therma
+    </a>
+
+    <nav aria-label="Primary navigation">
+      <a href="#converter">Converter</a>
+      <a href="#formulas">Formulas</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <a class="header-cta" href="#converter">
+      Convert now <span>↗</span>
+    </a>
+  </header>
+
+
+  <main id="top" class="page-shell">
+
+    <!-- HERO -->
+    <section class="intro" aria-labelledby="page-title">
+
+      <div class="intro-copy">
+        <span class="eyebrow">Simple science, beautifully clear</span>
+
+        <h1 id="page-title">
+          Know the temperature.<br />
+          <em>Feel prepared.</em>
+        </h1>
+
+        <p>
+          Convert Celsius, Fahrenheit, and Kelvin with instant, accurate
+          results — from everyday weather to absolute zero.
+        </p>
+
+        <a class="text-link" href="#converter">
+          Start converting <span>↓</span>
+        </a>
+      </div>
+
+
+      <div
+        class="thermometer-art"
+        role="img"
+        aria-label="Illustration of a warm orange thermometer"
+      >
+        <span class="sun sun-one"></span>
+        <span class="sun sun-two"></span>
+        <span class="sparkle">✦</span>
+
+        <div class="thermometer">
+          <div class="thermo-scale">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+
+          <div class="thermo-mercury"></div>
+          <div class="thermo-bulb"></div>
+        </div>
+
+        <span class="art-label">
+          <span id="art-temperature">22°</span>
+          <small id="art-description">just right</small>
+        </span>
+      </div>
+
+    </section>
+
+
+    <!-- CONVERTER -->
+    <section
+      id="converter"
+      class="converter-card"
+      aria-label="Temperature converter"
+    >
+
+      <div class="converter-heading">
+        <span class="section-number">CONVERTER</span>
+
+        <h2>One value. Every scale.</h2>
+
+        <p>
+          Choose your starting point and see the equivalent in every common
+          temperature unit.
+        </p>
+      </div>
+
+
+      <form id="converter-form" novalidate>
+
+        <div class="field-group">
+
+          <label for="temperature">Temperature value</label>
+
+          <div class="input-wrap">
+
+            <input
+              id="temperature"
+              name="temperature"
+              type="text"
+              inputmode="decimal"
+              autocomplete="off"
+              placeholder="e.g. 24.5"
+              aria-describedby="input-error"
+            />
+
+            <span id="input-symbol" class="input-symbol">°C</span>
+
+          </div>
+
+          <p
+            id="input-error"
+            class="error-message"
+            role="alert"
+          ></p>
+
+        </div>
+
+
+        <!-- QUICK VALUES -->
+        <div class="quick-values">
+          <span>Quick values</span>
+
+          <div class="quick-buttons">
+            <button type="button" data-value="-40">−40°</button>
+            <button type="button" data-value="0">0°</button>
+            <button type="button" data-value="20">20°</button>
+            <button type="button" data-value="37">37°</button>
+            <button type="button" data-value="100">100°</button>
+          </div>
+        </div>
+
+
+        <fieldset class="field-group unit-group">
+
+          <legend>Starting unit</legend>
+
+          <div class="unit-options">
+
+            <label class="unit-option">
+              <input
+                type="radio"
+                name="unit"
+                value="celsius"
+                checked
+              />
+
+              <span>
+                <b>°C</b>
+                <small>Celsius</small>
+              </span>
+            </label>
+
+
+            <label class="unit-option">
+              <input
+                type="radio"
+                name="unit"
+                value="fahrenheit"
+              />
+
+              <span>
+                <b>°F</b>
+                <small>Fahrenheit</small>
+              </span>
+            </label>
+
+
+            <label class="unit-option">
+              <input
+                type="radio"
+                name="unit"
+                value="kelvin"
+              />
+
+              <span>
+                <b>K</b>
+                <small>Kelvin</small>
+              </span>
+            </label>
+
+          </div>
+
+        </fieldset>
+
+
+        <button class="convert-button" type="submit">
+          Convert temperature <span>→</span>
+        </button>
+
+      </form>
+
+
+      <!-- RESULTS -->
+      <section
+        class="results"
+        aria-live="polite"
+        aria-label="Conversion results"
+      >
+
+        <div class="results-heading">
+          <span>Converted values</span>
+          <span id="result-status" class="status-dot">Ready</span>
+        </div>
+
+
+        <div class="result-grid">
+
+          <article class="result-item celsius-result">
+            <p>Celsius</p>
+
+            <div>
+              <strong id="celsius-value">—</strong>
+              <span>°C</span>
+            </div>
+          </article>
+
+
+          <article class="result-item fahrenheit-result">
+            <p>Fahrenheit</p>
+
+            <div>
+              <strong id="fahrenheit-value">—</strong>
+              <span>°F</span>
+            </div>
+          </article>
+
+
+          <article class="result-item kelvin-result">
+            <p>Kelvin</p>
+
+            <div>
+              <strong id="kelvin-value">—</strong>
+              <span>K</span>
+            </div>
+          </article>
+
+        </div>
+
+
+        <button
+          id="copy-button"
+          class="copy-button"
+          type="button"
+          disabled
+        >
+          Copy results
+          <span>⌘</span>
+        </button>
+
+      </section>
+
+    </section>
+
+
+    <!-- FORMULAS -->
+    <section
+      id="formulas"
+      class="formula-section"
+      aria-labelledby="formula-heading"
+    >
+
+      <div class="formula-copy">
+
+        <span class="section-number">FORMULAS</span>
+
+        <h2 id="formula-heading">
+          The math behind the measure.
+        </h2>
+
+        <p>
+          Every result uses standard scientific conversions, rounded only
+          for display.
+        </p>
+
+      </div>
+
+
+      <div class="formula-grid">
+
+        <article>
+          <span>Celsius → Fahrenheit</span>
+          <strong>°F = (°C × 9/5) + 32</strong>
+        </article>
+
+        <article>
+          <span>Fahrenheit → Celsius</span>
+          <strong>°C = (°F − 32) × 5/9</strong>
+        </article>
+
+        <article>
+          <span>Celsius → Kelvin</span>
+          <strong>K = °C + 273.15</strong>
+        </article>
+
+        <article>
+          <span>Fahrenheit → Kelvin</span>
+          <strong>K = (°F − 32) × 5/9 + 273.15</strong>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABSOLUTE ZERO -->
+    <section class="absolute-zero">
+
+      <div>
+        <span class="section-number">A LITTLE SCIENCE</span>
+
+        <h2>Nothing gets colder than this.</h2>
+      </div>
+
+      <p>
+        Absolute zero is the lowest theoretical temperature:
+        <strong>0 K</strong>, equal to <strong>−273.15 °C</strong>
+        or <strong>−459.67 °F</strong>.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer id="about" class="site-footer">
+
+    <div class="footer-top">
+
+      <a class="brand footer-brand" href="#top">
+        <span>●</span> therma
+      </a>
+
+      <p>
+        Thoughtful tools for understanding the world around you.
+      </p>
+
+      <div class="social-links" aria-label="Social media">
+
+        <a
+          href="https://www.instagram.com/devansh._.pandeyy/"
+          aria-label="Instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ig
+        </a>
+
+        <a
+          href="https://x.com/ImDpandeyy"
+          aria-label="X"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          𝕏
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/devansh-pandey-34759936b"
+          aria-label="LinkedIn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          in
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>© 2026 Therma Labs. All rights reserved.</span>
+
+      <span>
+        Made for curious minds <b>✦</b>
+      </span>
+
+      <a href="#formulas">
+        Conversion guide ↑
+      </a>
+
+    </div>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
